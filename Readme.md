@@ -1,5 +1,9 @@
 # CMake+Swift C module dependency virality bug repro
 
+As soon as a CMake project declares a Swift module consuming a C module that has a module map, all upstream Swift modules need to declare a direct dependency on the C module.
+
+## Steps
+
 Check out this repo and run:
 
 ```

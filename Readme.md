@@ -33,4 +33,10 @@ Module Three should build without requiring a direct dependency on One.
 target_link_libraries(Three PRIVATE One)
 ```
 
-But this is viral to all upstream targets consuming Two.
+or
+
+```
+target_include_directories(Three PRIVATE include)
+```
+
+But either of these need to be applied to every upstream target that transitively takes a dependency on Two.

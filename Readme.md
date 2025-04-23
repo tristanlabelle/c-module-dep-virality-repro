@@ -31,15 +31,23 @@ ninja: build stopped: subcommand failed.
 
 Module Three should build without requiring a direct dependency on One.
 
-## Workaround
+## Workarounds
 
+### Through library evolution
+
+```cmake
+target_compile_options(Two PRIVATE -enable-library-evolution)
 ```
+
+But this comes with some performance cost since the ABI of the Two module will incur more indirections from the Three module.
+
+### Through extra include directories
+
+```cmake
 target_link_libraries(Three PRIVATE One)
 ```
 
-or
-
-```
+```cmake
 target_include_directories(Three PRIVATE include)
 ```
 
